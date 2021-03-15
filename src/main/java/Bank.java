@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-public class Bank {
+public class Bank implements IBank {
     private String name;
     private ArrayList<Branch> branches;
 

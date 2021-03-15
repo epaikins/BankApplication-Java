@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Branch {
+public class Branch implements IBranch {
         private String name;
         private ArrayList<Customer> customers;
 
