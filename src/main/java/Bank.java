@@ -10,8 +10,8 @@ public class Bank implements IBank {
 
     public boolean addBranch(String branchName){
         Branch branch = findBranch(branchName);
-        if( branch != null){
-            this.branches.add(branch);
+        if(branch == null && branchName.length() > 0){
+            this.branches.add(new Branch(branchName));
             return true;
         }
         return false;
@@ -28,7 +28,11 @@ public class Bank implements IBank {
     public boolean addCustomerTransaction(String branchName, String customerName, double transaction){
         Branch branch = findBranch(branchName);
         if(branch != null) {
-            return branch.addCustomerTransaction(customerName, transaction);
+            Customer customer = branch.findCustomer(customerName);
+            if(customer!=null) {
+                return branch.addCustomerTransaction(customerName, transaction);
+            }
+            return false;
         }
         return false;
     }

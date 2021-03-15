@@ -16,10 +16,6 @@ public class CustomerTest {
     @Before
     public void setUp() throws Exception {
         customer = new Customer("Eugene", 20.00);
-        customer1 = new Customer("", 10);
-        customer2 = new Customer("John", -10);
-        customer3 = new Customer("Andrew", 0);
-        customer4 = new Customer("Kofi", 500);
         customer.addTransaction(20);
         customer.addTransaction(20.06);
     }
@@ -27,22 +23,40 @@ public class CustomerTest {
 
     @Test
     public void getName() {
+        // All fields are valid
         assertEquals("Eugene", customer.getName());
-        assertEquals(null, customer1.getName());
+
+        // name:"" (Empty Strings are not allowed hence the constructor returns a null); return null
+        assertNull((new Customer("", 10)).getName());
     }
 
     @Test
     public void getTransactions() {
+        //  Object customer has 3 transactions: (20.0, 20.0, 20.6); returns True
         assertEquals(Arrays.asList(20.0,20.0,20.06), customer.getTransactions());
-        assertEquals(Arrays.asList(500.0), customer4.getTransactions());
-        assertEquals(null, customer2.getTransactions());
-        assertEquals(Arrays.asList(0.0), customer3.getTransactions());
+
+        // Object has only one transaction in the list of transactions: expected:[500.0], actual: [500.0]
+        assertEquals(Arrays.asList(500.0), (new Customer("Kofi", 500)).getTransactions());
+
+        // initialTransaction = -10 (Negative values are not allowed); return null
+        assertNull((new Customer("John", -10)).getTransactions());
+
+        // Object has only one transaction in the list of transactions: expected:[0.0], actual: [0.0]
+        assertEquals(Arrays.asList(0.0), (new Customer("Andrew", 0)).getTransactions());
+
+        // Checks the length of the transactions list; expected: 3, actual: 3
+        assertEquals(3, customer.getTransactions().size());
     }
 
     @Test
     public void addTransaction() {
-        assertEquals(3, customer.getTransactions().size());
-        assertEquals(1, customer3.getTransactions().size());
-    }
+        // Add transaction = 2000 to customer transactions
+        customer.addTransaction(2000);
 
+        // Get size of list of transactions
+        int size = customer.getTransactions().size();
+
+        // Checks the last element in the list; expected: 2000, actual: 2000
+        assertEquals(2000, customer.getTransactions().get(size-1), 0.01);
+    }
 }
