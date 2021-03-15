@@ -5,8 +5,10 @@ public class Branch implements IBranch {
         private ArrayList<Customer> customers;
 
         public Branch(String name){
-            this.name = name;
-            this.customers = new ArrayList<Customer>();
+            if(name != "") {
+                this.name = name;
+                this.customers = new ArrayList<Customer>();
+            }
         }
 
     public String getName() {
@@ -19,8 +21,11 @@ public class Branch implements IBranch {
 
     public boolean newCustomer(String customerName, double initialTransaction){
             if(findCustomer(customerName) == null){
-                this.customers.add(new Customer(customerName,initialTransaction));
-                return true;
+                if(customerName.length() > 0 && initialTransaction >= 0) {
+                    this.customers.add(new Customer(customerName, initialTransaction));
+                    return true;
+                }
+                return false;
             }
             return false;
     }
@@ -36,7 +41,7 @@ public class Branch implements IBranch {
 
     public boolean addCustomerTransaction(String customerName, double transaction){
             Customer customer = findCustomer(customerName);
-            if(customer != null ) {
+            if(customer != null && transaction > 0) {
                 customer.addTransaction(transaction);
                 return true;
             }

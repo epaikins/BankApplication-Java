@@ -24,9 +24,6 @@ public class CustomerTest {
         customer.addTransaction(20.06);
     }
 
-    @After
-    public void tearDown() throws Exception {
-    }
 
     @Test
     public void getName() {
