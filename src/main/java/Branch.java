@@ -17,25 +17,25 @@ public class Branch {
         return this.customers;
     }
 
-    public boolean newCustomer(String name, double transaction){
-            if(findCustomer(name) == null){
-                this.customers.add(new Customer(name,transaction));
+    public boolean newCustomer(String customerName, double initialTransaction){
+            if(findCustomer(customerName) == null){
+                this.customers.add(new Customer(customerName,initialTransaction));
                 return true;
             }
             return false;
     }
 
-    public Customer findCustomer(String name){
+    public Customer findCustomer(String customerName){
             for(Customer customer: this.customers){
-                if(customer.getName().equals(name)){
+                if(customer.getName().equals(customerName)){
                     return customer;
                 }
             }
             return null;
     }
-    
-    public boolean addCustomerTransaction(String name, double transaction){
-            Customer customer = findCustomer(name);
+
+    public boolean addCustomerTransaction(String customerName, double transaction){
+            Customer customer = findCustomer(customerName);
             if(customer != null ) {
                 customer.addTransaction(transaction);
                 return true;
