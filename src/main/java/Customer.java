@@ -4,10 +4,12 @@ public class Customer implements ICustomer{
     private String name;
     private ArrayList<Double> transactions;
 
-    public Customer(String name, double transaction){
-        this.name = name;
-        this.transactions = new ArrayList<Double>();
-        transactions.add(transaction);
+    public Customer(String name, double initialTransaction){
+        if(name.length() > 0 && initialTransaction >= 0) {
+            this.name = name;
+            this.transactions = new ArrayList<Double>();
+            transactions.add(initialTransaction);
+        }
     }
 
     public String getName() {
@@ -19,6 +21,8 @@ public class Customer implements ICustomer{
     }
 
     public void addTransaction(double transaction){
-        this.transactions.add(transaction);
+        if(transaction > 0) {
+            this.transactions.add(transaction);
+        }
     }
 }
