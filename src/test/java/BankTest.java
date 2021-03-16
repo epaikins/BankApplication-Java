@@ -9,7 +9,7 @@ public class BankTest {
 
     @Before
     public void setUp() throws Exception {
-        bank = new Bank("National Australia org.pokoo_aikins.classes.Bank");
+        bank = new Bank("National Australia Bank");
         bank.addBranch("Adelaide");
 
         bank.addCustomer("Adelaide", "Tim", 50.05);
@@ -83,8 +83,17 @@ public class BankTest {
 
     @Test
     public void listCustomers() {
+        // Prints customers with their transactions in the Adelaide branch
         bank.listCustomers("Adelaide",true);
 
+        // Prints customers without their transactions in the Adelaide branch
         bank.listCustomers("Adelaide",false);
+
+
+        bank = new Bank("GCB");
+        bank.addBranch("Bongo");
+
+        // Prints nothing since branch has no customers
+        bank.listCustomers("Bongo",true);
     }
 }
