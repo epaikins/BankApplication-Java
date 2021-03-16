@@ -1,3 +1,5 @@
+package org.pokoo_aikins.interfaces;
+
 import java.util.ArrayList;
 
 public interface ICustomer {

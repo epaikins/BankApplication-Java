@@ -1,5 +1,6 @@
 import org.junit.Before;
 import org.junit.Test;
+import org.pokoo_aikins.classes.Bank;
 
 import static org.junit.Assert.*;
 
@@ -8,14 +9,17 @@ public class BankTest {
 
     @Before
     public void setUp() throws Exception {
-        bank = new Bank("GCB");
-        bank.addBranch("Cape Coast");
-        bank.addCustomer("Cape Coast", "Eugene", 20);
-        bank.addCustomer("Cape Coast", "Vee", 200);
-        bank.addCustomer("Cape Coast", "Gemini", 0);
-        bank.addCustomerTransaction("Cape Coast","Eugene",10);
-        bank.addCustomerTransaction("Cape Coast","Eugene",100);
-        bank.addCustomerTransaction("Cape Coast","Eugene",130);
+        bank = new Bank("National Australia org.pokoo_aikins.classes.Bank");
+        bank.addBranch("Adelaide");
+
+        bank.addCustomer("Adelaide", "Tim", 50.05);
+        bank.addCustomer("Adelaide", "Mike", 1745.34);
+        bank.addCustomer("Adelaide", "Percy", 220.12);
+
+        bank.addCustomerTransaction("Adelaide","Tim",44.22);
+        bank.addCustomerTransaction("Adelaide","Tim",12.44);
+        bank.addCustomerTransaction("Adelaide","Tim",1.65);
+
         bank.addCustomerTransaction("Cape Coast","Eugene",170);
     }
 
@@ -30,6 +34,7 @@ public class BankTest {
 
     @Test
     public void addCustomer() {
+        bank.addBranch("Cape Coast");
         // All fields are valid; return True
         assertTrue(bank.addCustomer("Cape Coast","Kweku",20));
 
@@ -45,33 +50,41 @@ public class BankTest {
 
     @Test
     public void addCustomerTransaction() {
+        bank.addBranch("Kumasi");
+        bank.addCustomer("Kumasi", "Kofi", 2500.05);
+
         // All fields are valid
-        assertTrue(bank.addCustomerTransaction("Cape Coast","Eugene",100));
+        assertTrue(bank.addCustomerTransaction("Kumasi","Kofi",100));
 
-        // branchName:"Kumasi" (Name of branch not in the list of branches); return False
-        assertFalse(bank.addCustomerTransaction("Kumasi","Eugene",100));
+        // branchName:"Tema" (Name of branch not in the list of branches); return False
+        assertFalse(bank.addCustomerTransaction("Tema","Kofi",100));
 
-        // customerName:"Dave" (Customer not in the list of customers for Cape Coast branch); return False
-        assertFalse(bank.addCustomerTransaction("Cape Coast","Dave",100));
+        // customerName:"Dave" (org.pokoo_aikins.classes.Customer not in the list of customers for Cape Coast branch); return False
+        assertFalse(bank.addCustomerTransaction("Kumasi","Dave",100));
 
         // transaction:-100 (negative values are not allowed); return False
-        assertFalse(bank.addCustomerTransaction("Cape Coast","Eugene",-100));
+        assertFalse(bank.addCustomerTransaction("Kumasi","Kofi",-100));
     }
 
-    @Test
-    public void findBranch() {
-        // branchName:"Kumasi" (Name of branch does not exist in list of branches); return null
-        assertNull(bank.findBranch("Kumasi"));
-
-        // branchName:"Cape Coast" (Branch exists in the list of branches); return true
-        assertEquals("Cape Coast", bank.findBranch("Cape Coast").getName());
-
-        // branchName: "" (Empty strings are not allowed); return null
-        assertNull(bank.findBranch(""));
-    }
+//
+//    @Test
+//    public void findBranch() {
+//        bank.addBranch("Cape Coast");
+//
+//        // branchName:"Kumasi" (Name of branch does not exist in list of branches); return null
+//        assertNull(bank.findBranch("Kumasi"));
+//
+//        // branchName:"Cape Coast" (org.pokoo_aikins.classes.Branch exists in the list of branches); return true
+//        assertEquals("Cape Coast", bank.findBranch("Cape Coast").getName());
+//
+//        // branchName: "" (Empty strings are not allowed); return null
+//        assertNull(bank.findBranch(""));
+//    }
 
     @Test
     public void listCustomers() {
-        bank.listCustomers("Cape Coast",true);
+        bank.listCustomers("Adelaide",true);
+
+        bank.listCustomers("Adelaide",false);
     }
 }

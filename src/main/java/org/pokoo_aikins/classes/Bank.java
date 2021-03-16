@@ -1,3 +1,7 @@
+package org.pokoo_aikins.classes;
+
+import org.pokoo_aikins.interfaces.IBank;
+
 import java.util.ArrayList;
 public class Bank implements IBank {
     private String name;
@@ -28,16 +32,12 @@ public class Bank implements IBank {
     public boolean addCustomerTransaction(String branchName, String customerName, double transaction){
         Branch branch = findBranch(branchName);
         if(branch != null) {
-            Customer customer = branch.findCustomer(customerName);
-            if(customer!=null) {
                 return branch.addCustomerTransaction(customerName, transaction);
-            }
-            return false;
         }
         return false;
     }
 
-    public Branch findBranch(String branchName){
+    private Branch findBranch(String branchName){
         for(Branch branch: this.branches){
             if(branch.getName().equals(branchName)){
                 return branch;
@@ -47,12 +47,12 @@ public class Bank implements IBank {
     }
 
     public void listCustomers(String branchName, boolean printTransactions){
-        System.out.println("Customer details for branch "+branchName);
+        System.out.println("org.pokoo_aikins.classes.Customer details for branch "+branchName);
         Branch branch =  findBranch(branchName);
         int customerNumber = 1;
         if(printTransactions){
             for(int i = 0; i < branch.getCustomers().size(); i++){
-                System.out.println("Customer: "+ branch.getCustomers().get(i).getName()+"["+ customerNumber + "]");
+                System.out.println("org.pokoo_aikins.classes.Customer: "+ branch.getCustomers().get(i).getName()+"["+ customerNumber + "]");
                 System.out.println("Transactions");
                 int transactionNumber = 1;
                 for(int j = 0; j < branch.getCustomers().get(i).getTransactions().size(); j++){
@@ -64,7 +64,7 @@ public class Bank implements IBank {
         }
         else{
             for(int i = 0; i < branch.getCustomers().size(); i++) {
-                System.out.println("Customer: " + branch.getCustomers().get(i).getName() + "[" + customerNumber + "]");
+                System.out.println("org.pokoo_aikins.classes.Customer: " + branch.getCustomers().get(i).getName() + "[" + customerNumber + "]");
                 customerNumber++;
             }
         }

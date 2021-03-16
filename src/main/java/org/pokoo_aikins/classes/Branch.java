@@ -1,3 +1,7 @@
+package org.pokoo_aikins.classes;
+
+import org.pokoo_aikins.interfaces.IBranch;
+
 import java.util.ArrayList;
 
 public class Branch implements IBranch {
@@ -30,7 +34,7 @@ public class Branch implements IBranch {
             return false;
     }
 
-    public Customer findCustomer(String customerName){
+    private Customer findCustomer(String customerName){
             for(Customer customer: this.customers){
                 if(customer.getName().equals(customerName)){
                     return customer;

@@ -1,9 +1,14 @@
+package org.pokoo_aikins.interfaces;
+import org.pokoo_aikins.classes.Customer;
+
 import java.util.ArrayList;
 
 public interface IBranch {
     public String getName();
     public ArrayList<Customer> getCustomers();
     public boolean newCustomer(String customerName, double initialTransaction);
-    public Customer findCustomer(String customerName);
+    private Customer findCustomer(String customerName){
+        return null;
+    };
     public boolean addCustomerTransaction(String customerName, double transaction);
 }
