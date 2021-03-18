@@ -44,18 +44,6 @@ public class BranchTest {
         assertFalse(branch.newCustomer("", 10));
     }
 
-//    @Test
-//    public void findCustomer() {
-//        // customerName="Amos" (Does not exist in the list of customers); return null
-//        assertNull(branch.findCustomer("Amos"));
-//
-//        // (customerName= "Eugene" exist in the list of customers); expected: "Eugene", actual: "Eugene"
-//        assertEquals("Eugene", branch.findCustomer("Eugene").getName());
-//
-//        // customerName="" (Empty strings are not allowed); return null
-//        assertNull(branch.findCustomer(""));
-//    }
-
     @Test
     public void addCustomerTransaction() {
         // All fields are valid

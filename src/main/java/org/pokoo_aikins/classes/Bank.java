@@ -39,35 +39,38 @@ public class Bank implements IBank {
 
     private Branch findBranch(String branchName){
         for(Branch branch: this.branches){
-            if(branch.getName().equals(branchName)){
+            if(branch.getName().equalsIgnoreCase(branchName)){
                 return branch;
             }
         }
         return null;
     }
 
-    public void listCustomers(String branchName, boolean printTransactions){
+    public boolean listCustomers(String branchName, boolean printTransactions){
         System.out.println("Customer details for branch "+branchName);
         Branch branch =  findBranch(branchName);
-        int customerNumber = 1;
-        if(printTransactions){
-            for(int i = 0; i < branch.getCustomers().size(); i++){
-                System.out.println("Customer: "+ branch.getCustomers().get(i).getName()+"["+ customerNumber + "]");
-                System.out.println("Transactions");
-                int transactionNumber = 1;
-                for(int j = 0; j < branch.getCustomers().get(i).getTransactions().size(); j++){
-                    System.out.println("["+transactionNumber+"] Amount " + branch.getCustomers().get(i).getTransactions().get(j));
-                    transactionNumber++;
+        if(branch != null) {
+            int customerNumber = 1;
+            if (printTransactions) {
+                for (int i = 0; i < branch.getCustomers().size(); i++) {
+                    System.out.println("Customer: " + branch.getCustomers().get(i).getName() + "[" + customerNumber + "]");
+                    System.out.println("Transactions");
+                    int transactionNumber = 1;
+                    for (int j = 0; j < branch.getCustomers().get(i).getTransactions().size(); j++) {
+                        System.out.println("[" + transactionNumber + "] Amount " + branch.getCustomers().get(i).getTransactions().get(j));
+                        transactionNumber++;
+                    }
+                    customerNumber++;
                 }
-                customerNumber++;
+            } else {
+                for (int i = 0; i < branch.getCustomers().size(); i++) {
+                    System.out.println("Customer: " + branch.getCustomers().get(i).getName() + "[" + customerNumber + "]");
+                    customerNumber++;
+                }
             }
+            return true;
         }
-        else{
-            for(int i = 0; i < branch.getCustomers().size(); i++) {
-                System.out.println("Customer: " + branch.getCustomers().get(i).getName() + "[" + customerNumber + "]");
-                customerNumber++;
-            }
-        }
+        return false;
     }
 
 }

@@ -7,8 +7,5 @@ public interface IBranch {
     public String getName();
     public ArrayList<Customer> getCustomers();
     public boolean newCustomer(String customerName, double initialTransaction);
-    private Customer findCustomer(String customerName){
-        return null;
-    };
     public boolean addCustomerTransaction(String customerName, double transaction);
 }

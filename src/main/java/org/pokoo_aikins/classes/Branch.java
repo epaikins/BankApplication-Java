@@ -36,7 +36,7 @@ public class Branch implements IBranch {
 
     private Customer findCustomer(String customerName){
             for(Customer customer: this.customers){
-                if(customer.getName().equals(customerName)){
+                if(customer.getName().equalsIgnoreCase(customerName)){
                     return customer;
                 }
             }

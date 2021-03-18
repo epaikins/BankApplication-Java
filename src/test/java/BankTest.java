@@ -28,6 +28,9 @@ public class BankTest {
         // All fields are valid; return True
         assertTrue(bank.addBranch("Accra"));
 
+        // branchName:"Adelaide" (Branch already exist in the list of branches); return False
+        assertFalse(bank.addBranch("Adelaide"));
+
         // branchName:"" (Empty strings are not allowed); return False
         assertFalse(bank.addBranch(""));
     }
@@ -40,6 +43,9 @@ public class BankTest {
 
         // branchName: Bolgatanga (Name of branch not in the list of branches); return False
         assertFalse(bank.addCustomer("Bolgatanga", "Yaw", 30));
+
+        // customerName: Time (Name of customer already in the list of customers); return False
+        assertFalse(bank.addCustomer("Adelaide", "Tim", 30));
 
         // customerName: "" (Empty strings are not allowed); return False
         assertFalse(bank.addCustomer("Cape Coast", "", 30));
@@ -66,23 +72,14 @@ public class BankTest {
         assertFalse(bank.addCustomerTransaction("Kumasi","Kofi",-100));
     }
 
-//
-//    @Test
-//    public void findBranch() {
-//        bank.addBranch("Cape Coast");
-//
-//        // branchName:"Kumasi" (Name of branch does not exist in list of branches); return null
-//        assertNull(bank.findBranch("Kumasi"));
-//
-//        // branchName:"Cape Coast" (org.pokoo_aikins.classes.Branch exists in the list of branches); return true
-//        assertEquals("Cape Coast", bank.findBranch("Cape Coast").getName());
-//
-//        // branchName: "" (Empty strings are not allowed); return null
-//        assertNull(bank.findBranch(""));
-//    }
-
     @Test
     public void listCustomers() {
+        // branchName:Adelaide (Branch exists in the list branches); return True
+        assertTrue(bank.listCustomers("Adelaide",false));
+
+        // branchName:Takwa (Branch does not exist in the list branches); return false
+        assertFalse(bank.listCustomers("Takwa",false));
+
         // Prints customers with their transactions in the Adelaide branch
         bank.listCustomers("Adelaide",true);
 
