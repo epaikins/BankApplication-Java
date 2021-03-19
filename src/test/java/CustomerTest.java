@@ -8,10 +8,6 @@ import static org.junit.Assert.*;
 
 public class CustomerTest {
     private Customer customer;
-    private Customer customer1;
-    private Customer customer2;
-    private Customer customer3;
-    private Customer customer4;
 
     @Before
     public void setUp() throws Exception {

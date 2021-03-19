@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="BankTest" time="0.132" tests="4" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="BankTest" time="0.129" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="15"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Amazon Corretto\jdk15.0.1_9\bin"/>
-    <property name="sun.java.command" value="C:\Users\Gene\AppData\Local\Temp\surefire15823935499159522638\surefirebooter4236421946705909037.jar C:\Users\Gene\AppData\Local\Temp\surefire15823935499159522638 2021-03-18T14-49-55_661-jvmRun1 surefire9249116155412325728tmp surefire_07255428299181998929tmp"/>
+    <property name="sun.java.command" value="C:\Users\Gene\AppData\Local\Temp\surefire427404924104103443\surefirebooter4944090429493045937.jar C:\Users\Gene\AppData\Local\Temp\surefire427404924104103443 2021-03-19T07-50-15_920-jvmRun1 surefire8332529648283858279tmp surefire_09763564007582963324tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="G:\My Drive\Amalitech\Mini-Project\BankApplication-Java\target\test-classes;G:\My Drive\Amalitech\Mini-Project\BankApplication-Java\target\classes;C:\Users\Gene\.m2\repository\junit\junit\4.13\junit-4.13.jar;C:\Users\Gene\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Gene\AppData\Local\Temp\surefire15823935499159522638\surefirebooter4236421946705909037.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Gene\AppData\Local\Temp\surefire427404924104103443\surefirebooter4944090429493045937.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="15.0.1+9"/>
@@ -57,8 +57,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="59.0"/>
   </properties>
-  <testcase name="addBranch" classname="BankTest" time="0.015"/>
-  <testcase name="addCustomer" classname="BankTest" time="0.001"/>
+  <testcase name="addBranch" classname="BankTest" time="0.019"/>
+  <testcase name="addCustomer" classname="BankTest" time="0"/>
   <testcase name="addCustomerTransaction" classname="BankTest" time="0"/>
-  <testcase name="listCustomers" classname="BankTest" time="0.016"/>
+  <testcase name="listCustomers" classname="BankTest" time="0.018"/>
 </testsuite>
